@@ -10,13 +10,22 @@ class Display : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding=ActivityDisplayBinding.inflate(layoutInflater)
+        binding = ActivityDisplayBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val sharedPreferences = getSharedPreferences(
+            getString(R.string.credentials), MODE_PRIVATE
+        )
+//        binding.imageView.setImageResource(sharedPreferences.getInt("image",R.drawable.a1))
+//        binding.name.setText(sharedPreferences.getString("name",""))
+//        binding.Description.setText(sharedPreferences.getString("description","asddsa"))
+//        binding.time.setText(sharedPreferences.getString("time",""))
+
+
 
         binding.imageView.setImageResource(intent.getIntExtra("image", R.drawable.a1))
         binding.name.setText(intent.getStringExtra("name").toString())
-        binding.name.setText(intent.getStringExtra("description"))
-        binding.name.setText(intent.getStringExtra("time"))
+        binding.Description.setText(intent.getStringExtra("description"))
+        binding.time.setText(intent.getStringExtra("time"))
 
     }
 }

@@ -1,11 +1,13 @@
 package com.sugam.trail12.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.sugam.trail12.Adapter.Adapter
+import com.sugam.trail12.R
 import com.sugam.trail12.databinding.ActivityMainBinding
 import com.sugam.trail12.dataclass.User
 import org.json.JSONObject
@@ -19,14 +21,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         window.statusBarColor=Color.TRANSPARENT
-
+        title="MAin"
+        val sharedPreferences=getSharedPreferences(getString(R.string.credentials), Context.MODE_PRIVATE)
         getjsondata()
 
         binding.listView.isClickable = true
         binding.listView.adapter = Adapter(this, arrayList)
         binding.listView.setOnItemClickListener { adapterView, view, i, l ->
+//            sharedPreferences.edit().clear().apply()
+//            sharedPreferences.edit().putInt("image", arrayList[i].imageId).apply()
+//            sharedPreferences.edit().putString("name", arrayList[i].name).apply()
+//            sharedPreferences.edit().putString("description", arrayList[i].description).apply()
+//            sharedPreferences.edit().putString("time", arrayList[i].time).apply()
 
             val intent = Intent(this, Display::class.java)
+            intent.putExtra("image", arrayList[i].imageId)
             intent.putExtra("name", arrayList[i].name)
             intent.putExtra("description", arrayList[i].description)
             intent.putExtra("time", arrayList[i].time)
