@@ -6,7 +6,9 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.sugam.trail12.Adapter.Adapter
+import com.sugam.trail12.Adapter.recylerAdapter
 import com.sugam.trail12.R
 import com.sugam.trail12.databinding.ActivityMainBinding
 import com.sugam.trail12.dataclass.User
@@ -24,6 +26,12 @@ class MainActivity : AppCompatActivity() {
         title="MAin"
         val sharedPreferences=getSharedPreferences(getString(R.string.credentials), Context.MODE_PRIVATE)
         getjsondata()
+
+        var adapter= recylerAdapter(this,arrayList)
+        binding.rv.layoutManager= StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+        binding.rv.adapter=adapter
+
+
 
         binding.listView.isClickable = true
         binding.listView.adapter = Adapter(this, arrayList)
