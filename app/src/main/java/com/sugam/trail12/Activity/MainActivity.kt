@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         getjsondata()
 
         var adapter= recylerAdapter(this,arrayList)
-        binding.rv.layoutManager= StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+       binding.rv.layoutManager= StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
         binding.rv.adapter=adapter
 
 
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                 arrayList.add(User(image, name, message, time))
                 arrayList.add(User(image, name, message, time))
             }
-
+            binding.textView.text=jsontext
 
         } catch (e: Exception) {
             Log.i("ex250","error occured ${e.message}")
